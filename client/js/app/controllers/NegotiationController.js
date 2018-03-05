@@ -5,12 +5,14 @@ class NegotiationController {
         this._inputValue = $('#valor');
         this._inputAmount = $('#quantidade');
         this._form = $('.form');
+        this._negotiationsList = new NegotiationsList();
     }
 
     add(event) {
         event.preventDefault();
-        console.log(this._createNegotiation());
+        this._negotiationsList.add(this._createNegotiation());
         this._clearForm();
+        console.log(this._negotiationsList.negotiations);
     }
 
     _clearForm() {
@@ -21,15 +23,9 @@ class NegotiationController {
     _createNegotiation() {
         return new Negotiation(
             this._inputValue.value,
-            this._convertDateStringToDate(this._inputDate.value),
+            DateHelper.toDate(this._inputDate.value),
             this._inputAmount.value
         );
-    }
-
-     _convertDateStringToDate(dateString) {
-        const date = dateString.split('-')
-                               .map((number, index) => number - index % 2);
-        return new Date(...date); // with spread operator
     }
 
 }
