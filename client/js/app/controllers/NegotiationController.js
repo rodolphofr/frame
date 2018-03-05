@@ -5,14 +5,20 @@ class NegotiationController {
         this._inputValue = $('#valor');
         this._inputAmount = $('#quantidade');
         this._form = $('.form');
+
         this._negotiationsList = new NegotiationsList();
+        this._negotiationsView = new NegotiationsView($('#negociacoes'));
+        this._messageView = new MessageView($('#message'));
+
+        this._renderNegotiationsTable();
     }
 
     add(event) {
         event.preventDefault();
         this._negotiationsList.add(this._createNegotiation());
         this._clearForm();
-        console.log(this._negotiationsList.negotiations);
+        this._renderNegotiationsTable();
+        this._renderMessage('Negotiation registered.');
     }
 
     _clearForm() {
@@ -26,6 +32,14 @@ class NegotiationController {
             DateHelper.toDate(this._inputDate.value),
             this._inputAmount.value
         );
+    }
+
+    _renderNegotiationsTable() {
+        this._negotiationsView.update(this._negotiationsList);
+    }
+
+    _renderMessage(messageContent) {
+        this._messageView.update(new Message(messageContent));
     }
 
 }
