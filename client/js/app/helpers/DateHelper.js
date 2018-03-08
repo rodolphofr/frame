@@ -15,7 +15,7 @@ class DateHelper {
         return new Date(...date); // com spread operator
     }
 
-    static toString(date) {
+    static toStr(date) {
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     }
 }

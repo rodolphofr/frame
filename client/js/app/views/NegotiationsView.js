@@ -18,7 +18,7 @@ class NegotiationsView extends View {
                     ${negotiations.map(n => 
                         `
                         <tr>
-                            <td>${DateHelper.toString(n.date)}</td>
+                            <td>${DateHelper.toStr(n.date)}</td>
                             <td>${n.amount}</td>
                             <td>${n.value}</td>
                             <td>${n.volume}</td>
