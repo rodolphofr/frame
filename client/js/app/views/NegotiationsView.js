@@ -1,3 +1,5 @@
+    /*jshint  esversion: 6*/
+
 class NegotiationsView extends View {
 
     template(negotiationModel) {
@@ -9,7 +11,7 @@ class NegotiationsView extends View {
                     <tr>
                         <th>DATA</th>
                         <th>QUANTIDADE</th>
-                        <th>VALOR</th>
+                        <th>VALOR</th> 
                         <th>VOLUME</th>
                     </tr>
                 </thead>
