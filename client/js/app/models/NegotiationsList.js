@@ -21,7 +21,7 @@ class NegotiationsList {
         this._viewTrigger(this);
     }
 
-    has_negotiation() {
+    isEmpty() {
         return this._negotiations.length > 0;
     }
 
