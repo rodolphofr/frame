@@ -7,7 +7,9 @@ class NegotiationController {
         this._inputValue = $('#valor');
         this._inputAmount = $('#quantidade');
         this._form = $('.form');
-        
+
+        // o this de uma arrow function eh lexico, ou seja, não muda de contexto
+        // o valor de this eh definido no local onde eh declarada
         this._negotiationsList = new NegotiationsList(model => this._renderNegotiationsTable(model));
         this._negotiationsView = new NegotiationsView($('#negociacoes'));
         this._messageView = new MessageView($('#message'));
@@ -23,7 +25,7 @@ class NegotiationController {
     }
 
     clearList() {
-        if (this._negotiationsList.has_negotiation()) {
+        if (this._negotiationsList.isEmpty()) {
             this._negotiationsList.clear();
             this._renderMessage('Cleared');
         }
