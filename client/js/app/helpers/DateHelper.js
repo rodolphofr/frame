@@ -10,7 +10,7 @@ class DateHelper {
         if (!PATTERN_DATE.test(dateString)) 
             throw new Error('Invalid date format. The correct format must be YYYY-mm-dd');
 
-        const date = dateString.split('-')
+        let date = dateString.split('-')
                                .map((number, index) => number - index % 2);
         return new Date(...date); // com spread operator
     }

@@ -2,23 +2,20 @@
 
 class NegotiationsList {
 
-    constructor(viewTrigger) {
+    constructor() {
         this._negotiations = [];
-        this._viewTrigger = viewTrigger;
     }
 
-    get negotiations() {
+    all() {
         return [].concat(this._negotiations); // para que a lista interna do objeto nao seja alterada
     }
 
     add(negotiation) {
         this._negotiations.push(negotiation);
-        this._viewTrigger(this);
     }
 
     clear() {
         this._negotiations = [];
-        this._viewTrigger(this);
     }
 
     isEmpty() {

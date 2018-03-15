@@ -3,8 +3,8 @@
 class NegotiationsView extends View {
 
     template(negotiationModel) {
-        const negotiations = negotiationModel.negotiations;
-        
+        let negotiations = negotiationModel.all();
+
         return `
             <table class="table table-hover table-bordered">
                 <thead>

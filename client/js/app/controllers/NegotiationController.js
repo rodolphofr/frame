@@ -8,13 +8,11 @@ class NegotiationController {
         this._inputAmount = $('#quantidade');
         this._form = $('.form');
 
-        // o this de uma arrow function eh lexico, ou seja, não muda de contexto
-        // o valor de this eh definido no local onde eh declarada
-        this._negotiationsList = new NegotiationsList(model => this._renderNegotiationsTable(model));
+        this._negotiationsList = new Proxy(new NegotiationsList(), this._handlerList());
         this._negotiationsView = new NegotiationsView($('#negociacoes'));
         this._messageView = new MessageView($('#message'));
 
-        this._renderNegotiationsTable(this._negotiationsList);
+        this._negotiationsView.update(this._negotiationsList);
     } 
 
     add(event) {
@@ -48,8 +46,21 @@ class NegotiationController {
         this._messageView.update(new Message(messageContent));
     }
 
-    _renderNegotiationsTable(negotiationsList) {
-        this._negotiationsView.update(negotiationsList);
+    _handlerList() {
+        let self = this;
+       
+        return {
+            get(target, prop, receiver) {
+                if ( ['add', 'clear'].includes(prop) && typeof(target[prop]) == typeof(Function) ) {
+                    return function() {
+                        Reflect.apply(target[prop], target, arguments);
+                        self._negotiationsView.update(target);
+                    }
+                }
+
+                return Reflect.get(target, prop, receiver);
+            }
+        };
     }
-    
+
 }
