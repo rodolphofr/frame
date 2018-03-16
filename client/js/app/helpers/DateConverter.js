@@ -1,9 +1,9 @@
 const PATTERN_DATE = /\d{4}-\d{2}-\d{2}/
 
-class DateHelper {
+class DateConverter {
 
     constructor() {
-        throw new Error('Cannot instantiate class DateHelper.')
+        throw new Error('Cannot instantiate class DateConverter.')
     }
 
     static toDate(dateString) {

@@ -2,9 +2,9 @@
 
 class NegotiationsView extends View {
 
-    template(negotiationModel) {
-        let negotiations = negotiationModel.all();
-
+    template(negotiationList) {
+        let negotiations = negotiationList.all();
+        
         return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -20,7 +20,7 @@ class NegotiationsView extends View {
                     ${negotiations.map(n => 
                         `
                         <tr>
-                            <td>${DateHelper.toStr(n.date)}</td>
+                            <td>${DateConverter.toStr(n.date)}</td>
                             <td>${n.amount}</td>
                             <td>${n.value}</td>
                             <td>${n.volume}</td>
