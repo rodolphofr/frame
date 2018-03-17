@@ -1,5 +1,3 @@
-/*jshint esversion: 6*/
-
 class NegotiationController {
 
     constructor() {
@@ -20,6 +18,8 @@ class NegotiationController {
                 'text'
             );
 
+        this._negotiationService = new NegotiationService();
+
     } 
 
     add(event) {
@@ -34,6 +34,17 @@ class NegotiationController {
             this._negotiationsList.clear();
             this._message.text = 'Cleared';
         }
+    }
+
+    importNegotiations() {
+        this._negotiationService.getNegotiationsOfTheWeek((error, result) => {
+            if (error) {
+                this._message.text = error;
+                return;
+            }
+
+            result.forEach(negotiation => this._negotiationsList.add(negotiation));
+        });
     }
 
     _clearForm() {

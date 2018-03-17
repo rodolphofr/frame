@@ -1,10 +1,8 @@
-    /*jshint  esversion: 6*/
-
 class NegotiationsView extends View {
 
     template(negotiationList) {
         let negotiations = negotiationList.all();
-        
+
         return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -31,7 +29,7 @@ class NegotiationsView extends View {
 
                 <tfoot>
                     <td colspan="3"></td> 
-                    <td>${negotiations.reduce((total, n) => total + n.volume, 0)}</td>
+                    <td>${negotiationList.totalVolume}</td>
                 </tfoot>
             </table>
             `;

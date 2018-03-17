@@ -1,5 +1,3 @@
-/*jshint  esversion: 6*/
-
 class NegotiationsList {
 
     constructor() {
@@ -20,6 +18,10 @@ class NegotiationsList {
 
     isEmpty() {
         return this._negotiations.length > 0;
+    }
+
+    get totalVolume() {
+        return this._negotiations.reduce((total, n) => total + n.volume, 0.0);
     }
 
 }
