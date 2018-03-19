@@ -30,7 +30,7 @@ class NegotiationController {
     }
 
     clearList() {
-        if (this._negotiationsList.isEmpty()) {
+        if (!this._negotiationsList.isEmpty()) {
             this._negotiationsList.clear();
             this._message.text = 'Cleared';
         }

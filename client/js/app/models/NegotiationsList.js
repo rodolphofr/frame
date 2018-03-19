@@ -17,7 +17,7 @@ class NegotiationsList {
     }
 
     isEmpty() {
-        return this._negotiations.length > 0;
+        return this._negotiations.length == 0;
     }
 
     get totalVolume() {

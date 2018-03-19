@@ -6,7 +6,7 @@ class NegotiationService {
         xhr.open('GET', 'negociacoes/semana');
 
         xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
+            if (xhr.readyState == 4) { // request and response are ready
                 if (xhr.status == 200) {
                     callback(null, this._transformJSONInNegotiation(xhr.responseText));
                     return;
