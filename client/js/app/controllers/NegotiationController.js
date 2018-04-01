@@ -37,14 +37,13 @@ class NegotiationController {
     }
 
     importNegotiations() {
-        this._negotiationService.getNegotiationsOfTheWeek((error, result) => {
-            if (error) {
-                this._message.text = error;
-                return;
-            }
-
-            result.forEach(negotiation => this._negotiationsList.add(negotiation));
-        });
+        this._negotiationService
+            .getAllNegotiations()
+            .then(negotiations => {
+                negotiations.forEach(negotiation => this._negotiationsList.add(negotiation));
+                this._message.text = "Negotiations imported.";
+            })
+            .catch(error => this._message.text = error);
     }
 
     _clearForm() {
