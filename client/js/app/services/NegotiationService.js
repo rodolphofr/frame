@@ -20,11 +20,11 @@ class NegotiationService {
     }
 
     getNegotiationsOfTheLastWeek() {
-        return this._getNegotiations('anterior', 'Error to get negotiations of last week')
+        return this._getNegotiations('anterior', 'Error to get negotiations of last week');
     }
 
     getNegotiationsOfTheBeforeLastWeek() {
-        return this._getNegotiations('retrasada', 'Error to get negotiations of before last week')
+        return this._getNegotiations('retrasada', 'Error to get negotiations of before last week');
     }
 
     _getNegotiations(period, errorMessage) {

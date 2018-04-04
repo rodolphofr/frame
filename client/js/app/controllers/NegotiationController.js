@@ -9,7 +9,7 @@ class NegotiationController {
         this._negotiationsList = new Bind(
                 new NegotiationsList(),
                 new NegotiationsView($('#negociacoes')),
-                'add', 'clear'
+                'add', 'clear', 'sort', 'reverse'
             );
         
         this._message = new Bind(
@@ -19,7 +19,7 @@ class NegotiationController {
             );
 
         this._negotiationService = new NegotiationService();
-
+        this._currentOrder = '';
     } 
 
     add(event) {
@@ -44,6 +44,15 @@ class NegotiationController {
                 this._message.text = "Negotiations imported.";
             })
             .catch(error => this._message.text = error);
+    }
+
+    sort(column) {
+        if (this._currentOrder == column) {
+            this._negotiationsList.reverse();
+        } else {
+            this._negotiationsList.sort((a, b) => b[column] - a[column]);
+        }
+        this._currentOrder = column;
     }
 
     _clearForm() {

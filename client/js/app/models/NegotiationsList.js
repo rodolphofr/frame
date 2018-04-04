@@ -20,6 +20,14 @@ class NegotiationsList {
         return this._negotiations.length == 0;
     }
 
+    sort(criteria) {
+        this._negotiations.sort(criteria);
+    }
+
+    reverse() {
+        this._negotiations.reverse();
+    }
+
     get totalVolume() {
         return this._negotiations.reduce((total, n) => total + n.volume, 0.0);
     }
