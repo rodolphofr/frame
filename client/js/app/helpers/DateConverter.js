@@ -1,17 +1,19 @@
-const PATTERN_DATE = /\d{4}-\d{2}-\d{2}/
+const PATTERN_DATE = /\d{2}\/\d{2}\/\d{4}/;
 
 class DateConverter {
 
     constructor() {
-        throw new Error('Cannot instantiate class DateConverter.')
+        throw new Error('Cannot instantiate class DateConverter.');
     }
 
     static toDate(dateString) {
         if (!PATTERN_DATE.test(dateString)) 
-            throw new Error('Invalid date format. The correct format must be YYYY-mm-dd');
+            throw new Error('Invalid date format. The correct format must be dd/mm/yyyy');
 
-        let date = dateString.split('-')
-                               .map((number, index) => number - index % 2);
+        let date = dateString.split('/')
+                             .reverse()
+                             .map((number, index) => number - index % 2);
+
         return new Date(...date); // com spread operator
     }
 

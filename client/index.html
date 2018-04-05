@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/common-effects.css">
+
+    <script src="js/app/polyfill/es6.js"></script>
 </head>
 <body class="container">
 
@@ -17,7 +19,7 @@
 
         <div class="form-group">
             <label for="data">Data</label>
-            <input type="date" id="data" class="form-control" required autofocus/>
+            <input type="text" id="data" class="form-control" placeholder="dd/mm/yyyy" required autofocus/>
         </div>
 
         <div class="form-group">
@@ -60,7 +62,7 @@
     <script src="js/app/services/NegotiationService.js"></script>
     <script src="js/app/services/HttpService.js"></script>
     <script>
-        let negotiationController = new NegotiationController();
+        var negotiationController = new NegotiationController();
     </script>
 </body>
 </html>

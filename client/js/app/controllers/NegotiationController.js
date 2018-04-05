@@ -24,9 +24,14 @@ class NegotiationController {
 
     add(event) {
         event.preventDefault();
-        this._negotiationsList.add(this._createNegotiation());
-        this._message.text = 'Negotiation registered.';
-        this._clearForm();
+
+        try {
+            this._negotiationsList.add(this._createNegotiation());
+            this._message.text = 'Negotiation registered.';
+            this._clearForm();    
+        } catch (error) {
+            this._message.text = error;
+        }
     }
 
     clearList() {
