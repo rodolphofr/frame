@@ -2,7 +2,7 @@ class NegotiationsView extends View {
 
     template(negotiationList) {
         let negotiations = negotiationList.all();
-
+        
         return `
             <table class="table table-hover table-bordered">
                 <thead>
